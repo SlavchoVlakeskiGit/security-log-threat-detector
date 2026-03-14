@@ -1,0 +1,4 @@
+brute_force_threshold: 3
+time_window_minutes: 5
+off_hours_start: 22
+off_hours_end: 6
