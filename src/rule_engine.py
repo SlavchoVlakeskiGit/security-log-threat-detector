@@ -38,3 +38,27 @@ def detect_bruteforce(events, threshold=3, window_minutes=5):
                 break
 
     return alerts
+
+def detect_off_hours_login(events, start_hour=22, end_hour=6):
+
+    from datetime import datetime
+
+    alerts = []
+
+    for event in events:
+
+        if event["event"] == "LOGIN_SUCCESS":
+
+            timestamp = datetime.strptime(event["timestamp"], "%Y-%m-%d %H:%M:%S")
+            hour = timestamp.hour
+
+            if hour >= start_hour or hour < end_hour:
+
+                alerts.append({
+                    "type": "OFF_HOURS_LOGIN",
+                    "user": event["user"],
+                    "ip": event["ip"],
+                    "time": event["timestamp"]
+                })
+
+    return alerts

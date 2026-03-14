@@ -1,6 +1,7 @@
 from src.log_parser import parse_log_line
-from src.rule_engine import detect_bruteforce
+from src.rule_engine import detect_bruteforce, detect_off_hours_login
 from src.alerts import print_alerts
+
 
 def load_logs(file_path):
 
@@ -24,7 +25,10 @@ def main():
 
     events = load_logs(logfile)
 
-    alerts = detect_bruteforce(events)
+    alerts = []   # <-- THIS WAS MISSING
+
+    alerts.extend(detect_bruteforce(events))
+    alerts.extend(detect_off_hours_login(events))
 
     print_alerts(alerts)
 
