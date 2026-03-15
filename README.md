@@ -117,4 +117,63 @@ pip install -r requirements.txt
 
 ## Running the Dashboard
 
-Start the Str
+Start the Streamlit interface:
+
+```
+streamlit run streamlit_app.py
+```
+
+Your browser will open automatically.
+
+Upload a log file to begin analysis.
+
+---
+
+## Example Output
+
+Detected alerts include:
+
+* username
+* IP address
+* timestamp
+* alert type
+* detection rule triggered
+
+Alerts can be exported to:
+
+```
+logs/alerts.csv
+logs/security_alerts.log
+```
+
+---
+
+## Skills Demonstrated
+
+This project demonstrates practical cybersecurity and software engineering skills including:
+
+* Log parsing and analysis
+* Threat detection logic
+* Security monitoring automation
+* Python backend development
+* Data visualization
+* Dashboard creation with Streamlit
+* Modular code architecture
+
+---
+
+## Future Improvements
+
+Potential enhancements include:
+
+* additional detection rules (credential stuffing, IP reputation)
+* integration with threat intelligence feeds
+* REST API for automated log ingestion
+* real-time log monitoring
+* Docker container deployment
+
+---
+
+## Author
+
+Created as part of a cybersecurity and software development portfolio demonstrating security automation and log analysis techniques.
