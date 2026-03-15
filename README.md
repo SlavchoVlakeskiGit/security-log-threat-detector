@@ -172,8 +172,3 @@ Potential enhancements include:
 * real-time log monitoring
 * Docker container deployment
 
----
-
-## Author
-
-Created as part of a cybersecurity and software development portfolio demonstrating security automation and log analysis techniques.
