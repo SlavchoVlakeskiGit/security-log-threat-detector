@@ -1,6 +1,6 @@
 ## Project Focus
 
-This project focuses on security analysis and anomaly detection using log data.
+This project focuses on detection logic and anomaly identification rather than API development or system architecture.
 
 Unlike the log analytics API, this tool emphasizes detection logic and visualization rather than backend architecture.
 
