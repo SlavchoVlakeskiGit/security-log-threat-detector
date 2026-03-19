@@ -1,70 +1,63 @@
-## Project Focus
-
-This project focuses on detection logic and anomaly identification rather than API development or system architecture.
-
-Unlike the log analytics API, this tool emphasizes detection logic and visualization rather than backend architecture.
-
 # Security Log Threat Detector
 
-A Python security log analysis tool that detects suspicious login activity from raw log files and presents findings in a simple Streamlit dashboard.
+A Python project that parses authentication logs and flags simple suspicious patterns such as repeated failed logins and off-hours access.
 
-This project focuses on practical log parsing, failed login detection, alert generation, and lightweight security visualization.
+I built it to practice log parsing, rule-based detection, and presenting results in a lightweight dashboard instead of just printing everything to the terminal.
 
-## Features
+## What it does
 
-- Parse authentication-style log entries from a text file
-- Detect repeated failed login attempts by user and IP
-- Flag suspicious patterns based on configurable thresholds
-- Display findings in a Streamlit dashboard
-- Show summary metrics and charts
-- Export suspicious activity to CSV
-- Includes sample log data for quick testing
+- reads sample authentication logs
+- parses events into a structured format
+- applies simple detection rules
+- generates alerts for suspicious activity
+- shows results in a small Streamlit dashboard
 
-## Tech Stack
+## Detection rules in this version
 
-- **Language:** Python
-- **Interface:** Streamlit
-- **Data Processing:** Pandas
-- **Visualization:** Matplotlib / Streamlit charts
-- **Export:** CSV
+The current project focuses on a small set of understandable rules:
 
-## Project Structure
+- repeated failed login attempts
+- successful logins outside normal hours
+- simple alert generation from matching events
+
+That scope is intentional. It is a small detection project, not a full SIEM or SOC platform.
+
+## Tech stack
+
+- Python
+- Streamlit
+- log parsing with custom Python code
+- basic tests
+
+## Why I built it
+
+I wanted one project in the portfolio that was closer to security operations work, but still simple enough to explain quickly.
+
+The useful part here is not the size of the project. It is the flow:
+
+1. ingest log data
+2. parse it
+3. apply rules
+4. surface alerts in a readable way
+
+## Project structure
 
 ```text
 security-log-threat-detector/
-│
 ├── data/
-│   ├── sample_log.txt
-│   └── suspicious_users.csv
-├── screenshots/
-│   └── dashboard.png
+├── docs/
+├── logs/
+├── rules/
 ├── src/
-│   ├── detector.py
-│   ├── parser.py
-│   └── utils.py
+├── tests/
 ├── streamlit_app.py
 ├── requirements.txt
 └── README.md
 ```
 
-## What It Does
+## Run locally
 
-The application reads login-style log data and looks for suspicious patterns such as repeated failed login attempts from the same account or IP address.
-
-It is intended as a lightweight security monitoring demo rather than a full SIEM or enterprise detection platform.
-
-## Example Log Format
-
-```text
-2026-03-10 10:01:21 user=john ip=192.168.1.5 status=failure
-2026-03-10 10:01:40 user=john ip=192.168.1.5 status=failure
-2026-03-10 10:02:02 user=john ip=192.168.1.5 status=failure
-2026-03-10 23:30:15 user=admin ip=10.0.0.8 status=success
-```
-
-## How to Run
-
-### 1. Clone the repository
+### 1. Clone the repo
 
 ```bash
 git clone https://github.com/SlavchoVlakeskiGit/security-log-threat-detector.git
@@ -77,44 +70,39 @@ cd security-log-threat-detector
 pip install -r requirements.txt
 ```
 
-### 3. Start the dashboard
+### 3. Run the dashboard
 
 ```bash
 streamlit run streamlit_app.py
 ```
 
-## Dashboard Preview
+## Example log format
 
-![Dashboard](docs/dashboard.png)
+```text
+2026-03-10 10:01:21 user=john ip=192.168.1.5 status=failure
+2026-03-10 10:01:40 user=john ip=192.168.1.5 status=failure
+2026-03-10 10:02:02 user=john ip=192.168.1.5 status=failure
+2026-03-10 23:30:15 user=admin ip=10.0.0.8 status=success
+```
 
-## Skills Demonstrated
+## What this project shows
 
-- Python scripting
-- Log parsing
-- Basic threat detection logic
-- Security-oriented data analysis
-- Dashboard development with Streamlit
-- CSV export workflow
+For a recruiter or hiring manager, this repo is mainly useful as evidence of:
 
-## Limitations
+- basic parsing and data processing
+- translating simple security rules into code
+- structuring a small Python project beyond a single script
+- adding a minimal interface on top of raw analysis
 
-- Detection logic is rule-based and intentionally lightweight
-- Input format expects a consistent log pattern
-- Designed for demo and portfolio use, not production deployment
+## Next improvements
 
-## Future Improvements
+If I kept working on it, the most useful next steps would be:
 
-- Add severity scoring for suspicious events
-- Support multiple log formats
-- Add IP reputation enrichment
-- Add date-range filtering in the dashboard
-- Add email or webhook alerts
-- Package the tool as a standalone executable
+- configurable rule thresholds
+- better test coverage for parsing edge cases
+- support for more than one input log format
+- export of alerts to CSV or JSON
 
-## Why I Built This
+## Notes
 
-I built this project to practice practical log analysis and security-focused detection logic in a way that feels more applied than a simple parser script.
-
-## Author
-
-**Slavcho Vlakeski**
+Keep the README practical. This project should read like a small hands-on security coding exercise, not like an enterprise detection platform.
