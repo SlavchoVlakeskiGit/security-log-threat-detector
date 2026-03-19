@@ -79,7 +79,7 @@ streamlit run streamlit_app.py
 
 ## Dashboard Preview
 
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](docs/dashboard.png)
 
 ## Skills Demonstrated
 
