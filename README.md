@@ -1,174 +1,114 @@
 # Security Log Threat Detector
 
-A lightweight cybersecurity tool that analyzes authentication logs and detects suspicious login activity such as brute force attacks and off-hours access.
+A Python security log analysis tool that detects suspicious login activity from raw log files and presents findings in a simple Streamlit dashboard.
 
-The project demonstrates how security teams can automate log analysis to quickly identify potential threats in large volumes of authentication data.
-
----
+This project focuses on practical log parsing, failed login detection, alert generation, and lightweight security visualization.
 
 ## Features
 
-* Detects **brute force login attempts**
-* Identifies **logins outside normal working hours**
-* Interactive **web dashboard** using Streamlit
-* Upload and analyze custom log files
-* Alert visualization with charts and metrics
-* Export alerts to **CSV**
-* Log security alerts for further investigation
+- Parse authentication-style log entries from a text file
+- Detect repeated failed login attempts by user and IP
+- Flag suspicious patterns based on configurable thresholds
+- Display findings in a Streamlit dashboard
+- Show summary metrics and charts
+- Export suspicious activity to CSV
+- Includes sample log data for quick testing
 
----
+## Tech Stack
 
-## Dashboard
-
-Example interface:
-
-![Security Dashboard](docs/dashboard.png)
-
-The dashboard allows analysts to:
-
-* Upload authentication logs
-* Adjust detection thresholds
-* View detected threats
-* Export alerts for further analysis
-
----
+- **Language:** Python
+- **Interface:** Streamlit
+- **Data Processing:** Pandas
+- **Visualization:** Matplotlib / Streamlit charts
+- **Export:** CSV
 
 ## Project Structure
 
-```
-security-log-threat-detector
+```text
+security-log-threat-detector/
 │
-├── src
-│   ├── main.py
-│   ├── log_parser.py
-│   ├── rule_engine.py
-│   └── alerts.py
-│
-├── data
-│   └── sample_auth.log
-│
-├── logs
-│   └── .gitkeep
-│
-├── docs
+├── data/
+│   ├── sample_log.txt
+│   └── suspicious_users.csv
+├── screenshots/
 │   └── dashboard.png
-│
+├── src/
+│   ├── detector.py
+│   ├── parser.py
+│   └── utils.py
 ├── streamlit_app.py
 ├── requirements.txt
-├── .gitignore
 └── README.md
 ```
 
----
+## What It Does
 
-## Detection Capabilities
+The application reads login-style log data and looks for suspicious patterns such as repeated failed login attempts from the same account or IP address.
 
-### Brute Force Detection
-
-Flags accounts that exceed a configurable number of failed login attempts within a short time window.
-
-Example:
-
-```
-user=john failed login 3 times within 5 minutes
-```
-
----
-
-### Off-Hours Login Detection
-
-Detects logins occurring outside defined working hours (e.g. 22:00-06:00).
-
-This can highlight:
-
-* compromised accounts
-* suspicious administrator access
-* automated scripts
-
----
+It is intended as a lightweight security monitoring demo rather than a full SIEM or enterprise detection platform.
 
 ## Example Log Format
 
-```
+```text
 2026-03-10 10:01:21 user=john ip=192.168.1.5 status=failure
 2026-03-10 10:01:40 user=john ip=192.168.1.5 status=failure
 2026-03-10 10:02:02 user=john ip=192.168.1.5 status=failure
 2026-03-10 23:30:15 user=admin ip=10.0.0.8 status=success
 ```
 
----
+## How to Run
 
-## Installation
+### 1. Clone the repository
 
-Clone the repository:
-
-```
-git clone https://github.com/YOUR_USERNAME/security-log-threat-detector.git
+```bash
+git clone https://github.com/SlavchoVlakeskiGit/security-log-threat-detector.git
 cd security-log-threat-detector
 ```
 
-Install dependencies:
+### 2. Install dependencies
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
----
+### 3. Start the dashboard
 
-## Running the Dashboard
-
-Start the Streamlit interface:
-
-```
+```bash
 streamlit run streamlit_app.py
 ```
 
-Your browser will open automatically.
+## Dashboard Preview
 
-Upload a log file to begin analysis.
-
----
-
-## Example Output
-
-Detected alerts include:
-
-* username
-* IP address
-* timestamp
-* alert type
-* detection rule triggered
-
-Alerts can be exported to:
-
-```
-logs/alerts.csv
-logs/security_alerts.log
-```
-
----
+![Dashboard](screenshots/dashboard.png)
 
 ## Skills Demonstrated
 
-This project demonstrates practical cybersecurity and software engineering skills including:
+- Python scripting
+- Log parsing
+- Basic threat detection logic
+- Security-oriented data analysis
+- Dashboard development with Streamlit
+- CSV export workflow
 
-* Log parsing and analysis
-* Threat detection logic
-* Security monitoring automation
-* Python backend development
-* Data visualization
-* Dashboard creation with Streamlit
-* Modular code architecture
+## Limitations
 
----
+- Detection logic is rule-based and intentionally lightweight
+- Input format expects a consistent log pattern
+- Designed for demo and portfolio use, not production deployment
 
 ## Future Improvements
 
-Potential enhancements include:
+- Add severity scoring for suspicious events
+- Support multiple log formats
+- Add IP reputation enrichment
+- Add date-range filtering in the dashboard
+- Add email or webhook alerts
+- Package the tool as a standalone executable
 
-* additional detection rules (credential stuffing, IP reputation)
-* integration with threat intelligence feeds
-* REST API for automated log ingestion
-* real-time log monitoring
-* Docker container deployment
+## Why I Built This
 
+I built this project to practice practical log analysis and security-focused detection logic in a way that feels more applied than a simple parser script.
+
+## Author
+
+**Slavcho Vlakeski**
