@@ -1,3 +1,9 @@
+## Project Focus
+
+This project focuses on security analysis and anomaly detection using log data.
+
+Unlike the log analytics API, this tool emphasizes detection logic and visualization rather than backend architecture.
+
 # Security Log Threat Detector
 
 A Python security log analysis tool that detects suspicious login activity from raw log files and presents findings in a simple Streamlit dashboard.
